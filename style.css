@@ -1,0 +1,13 @@
+:root {
+  --primary-color: #333;
+  --secondary-color: #7159c1;
+  --relax-color: #008000;
+  --danger-color: #FF7171;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Poppins, Geneva, Tahoma, sans-serif;
+}
