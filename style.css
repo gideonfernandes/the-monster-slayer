@@ -121,7 +121,7 @@ html, body {
 }
 
 #game-log {
-  margin: 20px;
+  margin: 20px 20px 40px 20px;
   padding: 20px 60px;
   border: 1px solid var(--neutral-color);
   border-radius: 6px;
@@ -148,4 +148,13 @@ html, body {
 #game-log > div.monster-log {
   color: var(--light-color);
   background: var(--danger-color);
+}
+
+#game-log > div.info-log {
+  color: var(--primary-color);
+  background: var(--warning-color);
+}
+
+.game-over {
+  color: var(--light-color);
 }

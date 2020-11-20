@@ -19,41 +19,53 @@
       <div class="player-box">
         <h2>Jogador</h2>
         <div class="hp-status">
-          <div class="relax" style="width: 100%;"></div>
+          <div :class="playerHP > 20 ? 'relax' : 'danger'" :style="{ width: playerHP + '%' }"></div>
         </div>
-        <p>100%</p>
+        <p>{{ playerHP }}%</p>
       </div>
       <div class="player-box">
         <h2>Monstro</h2>
         <div class="hp-status">
-          <div class="danger" style="width: 20%;"></div>
+          <div :class="monsterHP > 20 ? 'relax' : 'danger'" :style="{ width: monsterHP + '%' }"></div>
         </div>
-        <p>20%</p>
+        <p>{{ monsterHP }}%</p>
       </div>
     </section>
+
+    <div class="game-over">
+      <h2 v-if="winner === 'player'">VOCÊ VENCEU! :)</h2>
+      <h2 v-if="winner === 'monster'">VOCÊ PERDEU! :(</h2>
+      <h2 v-if="winner === 'nothing'">HOUVE UM EMPATE!</h2>
+    </div>
+    
 
     <section id="game-actions">
       <template v-if="playing">
         <button @click="attack()">ATAQUE</button>
         <button @click="specialAttack()">ATAQUE ESPECIAL</button>
         <button @click="heal()">CURAR</button>
-        <button @click="playing = !playing">DESISTIR</button>
+        <button @click="newGame()">DESISTIR</button>
       </template>
 
-      <button v-else @click="playing = !playing" class="start-button">
+      <button v-else @click="newGame(true)" class="start-button">
         INICIAR JOGO
       </button>
     </section>
 
     <section id="game-log">
-      <div class="player-log">JOGADOR ATINGIU O MONSTRO COM 14 PONTOS</div>
-      <div class="monster-log" >MONSTRO ATINGIU O JOGADOR COM 14 PONTOS</div>
-      <div class="player-log">JOGADOR ATINGIU O MONSTRO COM 14 PONTOS</div>
-      <div class="monster-log" >MONSTRO ATINGIU O JOGADOR COM 14 PONTOS</div>
-      <div class="player-log">JOGADOR ATINGIU O MONSTRO COM 14 PONTOS</div>
-      <div class="monster-log" >MONSTRO ATINGIU O JOGADOR COM 14 PONTOS</div>
-      <div class="player-log">JOGADOR ATINGIU O MONSTRO COM 14 PONTOS</div>
-      <div class="monster-log" >MONSTRO ATINGIU O JOGADOR COM 14 PONTOS</div>
+      <h3>GAME LOG</h3>
+      <div v-if="gameLog.length === 0" class="info-log">
+        Nenhum log no momento... Por favor faça alguma ação!
+      </div>
+
+      <template v-for="(log, index) in gameLog">
+        <div
+          :key="index"
+          :class="index % 2 === 0 ? 'player-log' : 'monster-log'"
+        >
+          {{ log }}
+        </div>
+      </template>
     </section>
   </main>
 
