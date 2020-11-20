@@ -1,5 +1,7 @@
 new Vue({
   el: '#app',
-  data: {},
+  data: {
+    playing: false,
+  },
   methods: {},
 });

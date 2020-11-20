@@ -3,6 +3,9 @@
   --secondary-color: #7159c1;
   --relax-color: #008000;
   --danger-color: #FF7171;
+  --warning-color: orange;
+  --neutral-color: #ccc;
+  --light-color: whitesmoke;
 }
 
 html, body {
@@ -10,4 +13,139 @@ html, body {
   padding: 0;
   box-sizing: border-box;
   font-family: Poppins, Geneva, Tahoma, sans-serif;
+  background: var(--secondary-color);
+}
+
+#app {
+  min-width: 100%;
+  min-height: 100%;
+
+  margin: 0 auto;
+  text-align: center;
+}
+
+#app > h1 {
+  font-size: 2.2rem;
+  color: var(--light-color);
+}
+
+#players {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid var(--neutral-color);
+  border-radius: 6px;
+  background-color: var(--light-color);
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#players > .player-box {
+  width: 400px;
+  padding: 15px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#players > .player-box > h2 {
+  color: var(--secondary-color);
+
+  font-size: 1.5rem;
+}
+
+#players > .player-box > .hp-status {
+  width: 100%;
+  height: 20px;
+  border: 1px solid var(--neutral-color);
+  border-radius: 4px;
+}
+
+.player-box > .hp-status > div {
+  width: 25%;
+  height: 100%;
+}
+
+.player-box > .hp-status > div.relax {
+  background: var(--relax-color);
+}
+
+.player-box > .hp-status > div.danger {
+  background: var(--danger-color);
+}
+
+#game-actions {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid var(--neutral-color);
+  border-radius: 6px;
+  background-color: var(--primary-color);
+}
+
+#game-actions > button {
+  font-weight: bold;
+  font-size: 0.95rem;
+  margin: 0 12px;
+  padding: 8px 17px;
+  border: 0;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#game-actions > button:nth-of-type(1) {
+  color: var(--light-color);
+  background: var(--danger-color);
+}
+
+#game-actions > button:nth-of-type(2) {
+  color: var(--primary-color);
+  background: var(--warning-color);
+}
+
+#game-actions > button:nth-of-type(3) {
+  color: var(--light-color);
+  background: var(--secondary-color);
+}
+
+#game-actions > button:nth-of-type(4) {
+  color: var(--primary-color);
+  background: var(--neutral-color);
+}
+
+#game-actions > button.start-button {
+  color: var(--light-color);
+  background: var(--secondary-color);
+}
+
+#game-log {
+  margin: 20px;
+  padding: 20px 60px;
+  border: 1px solid var(--neutral-color);
+  border-radius: 6px;
+  color: var(--primary-color);
+  background: var(--light-color);
+
+  display: flex;
+  flex-direction: column;
+}
+
+#game-log > div {
+  display: block;
+  width: 100%;
+  border: 1px solid var(--neutral-color);
+  border-radius: 6px;
+  margin: 3px;
+}
+
+#game-log > div.player-log {
+  color: var(--light-color);
+  background: var(--secondary-color);
+}
+
+#game-log > div.monster-log {
+  color: var(--light-color);
+  background: var(--danger-color);
 }

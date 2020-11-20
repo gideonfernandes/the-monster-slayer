@@ -18,24 +18,43 @@
     <section id="players">
       <div class="player-box">
         <h2>Jogador</h2>
-        <div class="hp-status"></div>
+        <div class="hp-status">
+          <div class="relax" style="width: 100%;"></div>
+        </div>
         <p>100%</p>
       </div>
       <div class="player-box">
         <h2>Monstro</h2>
-        <div class="hp-status"></div>
+        <div class="hp-status">
+          <div class="danger" style="width: 20%;"></div>
+        </div>
         <p>20%</p>
       </div>
     </section>
 
-    <section class="game-actions">
-      <button>ATAQUE</button>
-      <button>ATAQUE ESPECIAL</button>
-      <button>CURAR</button>
-      <button>DESISTIR</button>
+    <section id="game-actions">
+      <template v-if="playing">
+        <button @click="attack()">ATAQUE</button>
+        <button @click="specialAttack()">ATAQUE ESPECIAL</button>
+        <button @click="heal()">CURAR</button>
+        <button @click="playing = !playing">DESISTIR</button>
+      </template>
+
+      <button v-else @click="playing = !playing" class="start-button">
+        INICIAR JOGO
+      </button>
     </section>
 
-    <section class="game-log"></section>
+    <section id="game-log">
+      <div class="player-log">JOGADOR ATINGIU O MONSTRO COM 14 PONTOS</div>
+      <div class="monster-log" >MONSTRO ATINGIU O JOGADOR COM 14 PONTOS</div>
+      <div class="player-log">JOGADOR ATINGIU O MONSTRO COM 14 PONTOS</div>
+      <div class="monster-log" >MONSTRO ATINGIU O JOGADOR COM 14 PONTOS</div>
+      <div class="player-log">JOGADOR ATINGIU O MONSTRO COM 14 PONTOS</div>
+      <div class="monster-log" >MONSTRO ATINGIU O JOGADOR COM 14 PONTOS</div>
+      <div class="player-log">JOGADOR ATINGIU O MONSTRO COM 14 PONTOS</div>
+      <div class="monster-log" >MONSTRO ATINGIU O JOGADOR COM 14 PONTOS</div>
+    </section>
   </main>
 
   <script src="./app.js"></script>
